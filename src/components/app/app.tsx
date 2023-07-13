@@ -3,6 +3,7 @@ import { Main } from '../../pages/main/main';
 import { Offer } from '../../pages/offer/offer';
 import { Login } from '../../pages/login/login';
 import { Favorites } from '../../pages/favorites/favorites';
+import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
 
@@ -25,6 +26,10 @@ function App({offersNumber, userName, favoritesNumber}: AppProps): JSX.Element {
           element={<Offer />}
         />
         <Route
+          path='/offer/:id'
+          element={<Offer />}
+        />
+        <Route
           path={AppRoute.Login}
           element={<Login />}
         />
@@ -37,6 +42,10 @@ function App({offersNumber, userName, favoritesNumber}: AppProps): JSX.Element {
               <Favorites />
             </PrivateRoute>
           }
+        />
+        <Route
+          path="*"
+          element={<PageNotFound />}
         />
       </Routes>
     </BrowserRouter>
