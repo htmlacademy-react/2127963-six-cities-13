@@ -18,4 +18,11 @@ const Accomodation = {
   'hotel':'Hotel'
 } as const;
 
-export { Setting, AppRoute, Accomodation };
+
+const AuthorizationStatus = {
+  Auth: 'AUTH',
+  NoAuth: 'NO_AUTH',
+  Unknown:'UNKNOWN',
+} as const;
+
+export { Setting, AppRoute, AuthorizationStatus, Accomodation };

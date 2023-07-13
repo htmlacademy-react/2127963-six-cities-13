@@ -16,7 +16,13 @@ function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element
           <div className="header__wrapper">
             <div className="header__left">
               <a className="header__logo-link header__logo-link--active">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+                <img
+                  className="header__logo"
+                  src="img/logo.svg"
+                  alt="6 cities logo"
+                  width={81}
+                  height={41}
+                />
               </a>
             </div>
             <nav className="header__nav">
@@ -87,7 +93,7 @@ function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
                   Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
+                  <svg className="places__sorting-arrow" width={7} height={4}>
                     <use xlinkHref="#icon-arrow-select"></use>
                   </svg>
                 </span>
@@ -114,4 +120,4 @@ function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element
   );
 }
 
-export default Main;
+export { Main };

@@ -1,9 +1,10 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import Main from '../../pages/main/main';
-import Offer from '../../pages/offer/offer';
-import Login from '../../pages/login/login';
-import Favorites from '../../pages/favorites/favorites';
-import { AppRoute } from '../../const';
+import { Main } from '../../pages/main/main';
+import { Offer } from '../../pages/offer/offer';
+import { Login } from '../../pages/login/login';
+import { Favorites } from '../../pages/favorites/favorites';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { PrivateRoute } from '../private-route/private-route';
 
 type AppProps = {
   offersNumber: number;
@@ -29,11 +30,17 @@ function App({offersNumber, userName, favoritesNumber}: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Favorites}
-          element={<Favorites />}
+          element={
+            <PrivateRoute
+              authorizationStatus={AuthorizationStatus.NoAuth}
+            >
+              <Favorites />
+            </PrivateRoute>
+          }
         />
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default App;
+export { App };

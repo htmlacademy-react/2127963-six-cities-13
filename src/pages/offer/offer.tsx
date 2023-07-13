@@ -464,4 +464,4 @@ function Offer(): JSX.Element {
   );
 }
 
-export default Offer;
+export { Offer };
