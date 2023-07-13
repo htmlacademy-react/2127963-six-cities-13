@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import PlaceCard from '../../components/place-card/place-card';
 
 type MainProps = {
@@ -12,6 +13,9 @@ function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element
 
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>Six cities</title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

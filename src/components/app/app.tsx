@@ -1,4 +1,5 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import {HelmetProvider} from 'react-helmet-async';
 import { Main } from '../../pages/main/main';
 import { Offer } from '../../pages/offer/offer';
 import { Login } from '../../pages/login/login';
@@ -15,40 +16,42 @@ type AppProps = {
 
 function App({offersNumber, userName, favoritesNumber}: AppProps): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<Main offersNumber={offersNumber} userName={userName} favoritesNumber={favoritesNumber} />}
-        />
-        <Route
-          path={AppRoute.Offer}
-          element={<Offer />}
-        />
-        <Route
-          path='/offer/:id'
-          element={<Offer />}
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<Login />}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
-            >
-              <Favorites />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={<PageNotFound />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Main}
+            element={<Main offersNumber={offersNumber} userName={userName} favoritesNumber={favoritesNumber} />}
+          />
+          <Route
+            path={AppRoute.Offer}
+            element={<Offer />}
+          />
+          <Route
+            path='/offer/:id'
+            element={<Offer />}
+          />
+          <Route
+            path={AppRoute.Login}
+            element={<Login />}
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute
+                authorizationStatus={AuthorizationStatus.NoAuth}
+              >
+                <Favorites />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={<PageNotFound />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
