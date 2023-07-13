@@ -6,7 +6,19 @@ type MainProps = {
   favoritesNumber: number;
 };
 
+
+/*function renderCards () {
+  const cards = [];
+  for (let i = 1; i <= 5; i++) {
+    cards.push(<PlaceCard />);
+  }
+
+  return cards;
+}*/
+
 function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element {
+
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -97,11 +109,9 @@ function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
+
+                {Array.from({ length: offersNumber }, (_, k) => <PlaceCard key={k}/>)}
+
               </div>
             </section>
             <div className="cities__right-section">
@@ -113,5 +123,7 @@ function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element
     </div>
   );
 }
+
+//просто разные варианты рендеринга списка
 
 export default Main;
