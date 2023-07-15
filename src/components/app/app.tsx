@@ -24,11 +24,7 @@ function App({ offersNumber, userName, favoritesNumber }: AppProps): JSX.Element
             element={<Main offersNumber={offersNumber} userName={userName} favoritesNumber={favoritesNumber} />}
           />
           <Route
-            path={AppRoute.Offer}
-            element={<Offer />}
-          />
-          <Route
-            path='/offer/:id'
+            path={`${AppRoute.Offer}/:offerId`}
             element={<Offer />}
           />
           <Route
