@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import PlaceCard from '../../components/place-card/place-card';
+import { PlaceCard } from '../../components/place-card/place-card';
 
 type MainProps = {
   offersNumber: number;
@@ -8,7 +8,7 @@ type MainProps = {
   favoritesNumber: number;
 };
 
-function Main({offersNumber, userName, favoritesNumber}: MainProps): JSX.Element {
+function Main({ offersNumber, userName, favoritesNumber }: MainProps): JSX.Element {
 
 
   return (

@@ -1,5 +1,5 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import {HelmetProvider} from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 import { Main } from '../../pages/main/main';
 import { Offer } from '../../pages/offer/offer';
 import { Login } from '../../pages/login/login';
@@ -14,7 +14,7 @@ type AppProps = {
   favoritesNumber: number;
 }
 
-function App({offersNumber, userName, favoritesNumber}: AppProps): JSX.Element {
+function App({ offersNumber, userName, favoritesNumber }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
