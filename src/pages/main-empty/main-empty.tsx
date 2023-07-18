@@ -21,12 +21,12 @@ function MainEmpty(): JSX.Element {
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
+                    <span className="header__favorite-count">10</span>
                   </a>
                 </li>
                 <li className="header__nav-item">
                   <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
+                    <span className="header__signout">Sign шт</span>
                   </a>
                 </li>
               </ul>

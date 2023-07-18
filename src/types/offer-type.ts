@@ -27,6 +27,23 @@ export type Offer = {
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
+  previewImage: string;
+}
+
+export type Offers = Offer[]
+
+export type DetailedOffer = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: City;
+
+  location: OfferLocation;
+
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
   description: string;
   bedrooms: number;
   goods: string[];

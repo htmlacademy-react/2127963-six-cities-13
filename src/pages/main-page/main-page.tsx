@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { PlaceCard } from '../../components/place-card/place-card';
+//import { PlaceCard } from '../../components/place-card/place-card';
+import { OfferList } from '../../components/offer-list/offer-list';
+import { Offers } from '../../types/offer-type';
 
 type MainProps = {
   offersNumber: number;
-  userName: string;
-  favoritesNumber: number;
+  offers: Offers;
+  //userName: string;
+  //favoritesNumber: number;
 };
 
-function Main({ offersNumber, userName, favoritesNumber }: MainProps): JSX.Element {
-
+function MainPage({ offersNumber, offers/*, userName, favoritesNumber*/ }: MainProps): JSX.Element {
 
   return (
     <div className="page page--gray page--main">
@@ -36,8 +38,8 @@ function Main({ offersNumber, userName, favoritesNumber }: MainProps): JSX.Eleme
                   <Link className="header__nav-link header__nav-link--profile" to="/login">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">{userName}</span>
-                    <span className="header__favorite-count">{favoritesNumber}</span>
+                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                    <span className="header__favorite-count">5</span>
                   </Link>
                 </li>
                 <li className="header__nav-item">
@@ -111,7 +113,7 @@ function Main({ offersNumber, userName, favoritesNumber }: MainProps): JSX.Eleme
               </form>
               <div className="cities__places-list places__list tabs__content">
 
-                {Array.from({ length: offersNumber }, (_, k) => <PlaceCard key={k}/>)}
+                <OfferList offers={offers}/>
 
               </div>
             </section>
@@ -125,4 +127,4 @@ function Main({ offersNumber, userName, favoritesNumber }: MainProps): JSX.Eleme
   );
 }
 
-export { Main };
+export { MainPage };

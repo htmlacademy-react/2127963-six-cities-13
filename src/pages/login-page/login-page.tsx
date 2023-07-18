@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-function Login(): JSX.Element {
+function LoginPage(): JSX.Element {
   return (
     <div className="page page--gray page--login">
       <Helmet>
@@ -54,4 +54,4 @@ function Login(): JSX.Element {
   );
 }
 
-export { Login };
+export { LoginPage };

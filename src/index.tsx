@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './components/app/app';
 import { Setting } from './const';
+import { offers } from './mocks/mock-offers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +10,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offersNumber={Setting.OffersNumber} userName={Setting.UserName} favoritesNumber={Setting.FavoritesNumber}/>
+    <App
+      offersNumber={Setting.OffersNumber}
+      offers={offers}
+    />
   </React.StrictMode>
 );

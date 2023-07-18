@@ -1,7 +1,12 @@
 const Setting = {
   OffersNumber: 5,
-  UserName: 'Oliver.conner@gmail.com',
-  FavoritesNumber: 5
+  //UserName: 'Oliver.conner@gmail.com',
+  //FavoritesNumber: 5
+} as const;
+
+const Rating = {
+  Percent: 100,
+  Divisor: 5
 } as const;
 
 const AppRoute = {
@@ -25,4 +30,4 @@ const AuthorizationStatus = {
   Unknown:'UNKNOWN',
 } as const;
 
-export { Setting, AppRoute, AuthorizationStatus, Accomodation };
+export { Setting, AppRoute, AuthorizationStatus, Accomodation, Rating };
