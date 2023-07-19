@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-//import { CITIES } from '../../const';
-
 import { FavoriteCard } from '../../components/favorite-card/favorite-card';
 import { FavoritesEmpty } from '../favorites-empty/favorites-empty';
 
@@ -48,7 +46,7 @@ function FavoritesPage({ offers }: FavoritesProps): JSX.Element {
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
+                    <span className="header__favorite-count">{favoriteOffers.length}</span>
                   </Link>
                 </li>
                 <li className="header__nav-item">
@@ -68,28 +66,40 @@ function FavoritesPage({ offers }: FavoritesProps): JSX.Element {
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
 
-              {favoriteCities.map((city) => (
-                <li className="favorites__locations-items" key={city}>
+              {favoriteCities.map((favoriteCity) => (
+                <li className="favorites__locations-items" key={favoriteCity}>
 
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
-                      <a className="locations__item-link" href="#">
-                        <span>{city}</span>
-                      </a>
+                      <Link className="locations__item-link" to="#">
+                        <span>{favoriteCity}</span>
+                      </Link>
                     </div>
                   </div>
+
                   <div className="favorites__places">
-
-                    {favoriteOffers.map((favoriteOffer) => <FavoriteCard key={favoriteOffer.id} type={favoriteOffer.type} title={favoriteOffer.title} price={favoriteOffer.price} rating={favoriteOffer.rating} previewImage={favoriteOffer.previewImage}/>)}
-
+                    {favoriteOffers.map((favoriteOffer) =>
+                      (favoriteOffer.city.name === favoriteCity)
+                      &&
+                      (
+                        <FavoriteCard
+                          key = {favoriteOffer.id}
+                          type = {favoriteOffer.type}
+                          title = {favoriteOffer.title}
+                          price = {favoriteOffer.price}
+                          rating = {favoriteOffer.rating}
+                          previewImage = {favoriteOffer.previewImage}
+                          isPremium = {favoriteOffer.isPremium}
+                        />
+                      ))}
                   </div>
                 </li>
-
               ))}
             </ul>
           </section>
         </div>
       </main>
+
       <footer className="footer container">
         <Link className="footer__logo-link" to="/">
           <img className="footer__logo"

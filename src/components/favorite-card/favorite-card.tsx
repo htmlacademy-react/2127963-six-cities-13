@@ -1,10 +1,5 @@
 import { Link } from 'react-router-dom';
-//import { Offer } from '../../types/offer-type';
 import { Rating, Accomodation } from '../../const';
-
-/*type FavoriteCardProps = {
-  offer: Offer;
-}*/
 
 type FavoriteCardProps = {
   type: string;
@@ -12,6 +7,7 @@ type FavoriteCardProps = {
   price: number;
   rating: number;
   previewImage: string;
+  isPremium: boolean;
 }
 
 type AccomodationType = 'apartment' | 'room' | 'house' | 'hotel'
@@ -20,8 +16,7 @@ function getAccomodationType (accomodationType: AccomodationType) {
   return Accomodation[accomodationType];
 }
 
-function FavoriteCard({ type, title, price, rating, previewImage }: FavoriteCardProps): JSX.Element {
-  //const { type, title, price, rating, previewImage } = offer;
+function FavoriteCard({ type, title, price, rating, previewImage, isPremium }: FavoriteCardProps): JSX.Element {
 
   const accomodationType = getAccomodationType(type as AccomodationType);
 
@@ -30,9 +25,11 @@ function FavoriteCard({ type, title, price, rating, previewImage }: FavoriteCard
   return (
 
     <article className="favorites__card place-card">
+      {isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
-      </div>
+      </div>}
+
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image"
