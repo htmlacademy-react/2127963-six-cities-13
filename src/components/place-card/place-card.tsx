@@ -8,14 +8,14 @@ type PlaceCardProps = {
 }
 
 function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
-  const { type, title, price, rating, previewImage } = offer;
+  const { id, type, title, price, rating, previewImage } = offer;
 
   const offerRating = rating * Rating.Percent / Rating.Divisor;
 
   return (
     <article className="cities__card place-card">
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`${AppRoute.Offer}/:${offer.id}`}>
+        <Link to={`${AppRoute.Offer}/:${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title}/>
         </Link>
       </div>
@@ -39,7 +39,7 @@ function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Offer}/:${offer.id}`}>{title}</Link>
+          <Link to={`${AppRoute.Offer}/:${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
