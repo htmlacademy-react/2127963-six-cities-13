@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../types/offer-type';
+//import { Offer } from '../../types/offer-type';
 import { Rating, Accomodation } from '../../const';
 
-type FavoriteCardProps = {
+/*type FavoriteCardProps = {
   offer: Offer;
+}*/
+
+type FavoriteCardProps = {
+  type: string;
+  title: string;
+  price: number;
+  rating: number;
+  previewImage: string;
 }
 
 type AccomodationType = 'apartment' | 'room' | 'house' | 'hotel'
@@ -12,8 +20,8 @@ function getAccomodationType (accomodationType: AccomodationType) {
   return Accomodation[accomodationType];
 }
 
-function FavoriteCard({ offer }: FavoriteCardProps): JSX.Element {
-  const { type, title, price, rating, previewImage } = offer;
+function FavoriteCard({ type, title, price, rating, previewImage }: FavoriteCardProps): JSX.Element {
+  //const { type, title, price, rating, previewImage } = offer;
 
   const accomodationType = getAccomodationType(type as AccomodationType);
 
