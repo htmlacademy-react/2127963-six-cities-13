@@ -1,8 +1,15 @@
 const Setting = {
   OffersNumber: 5,
-  //UserName: 'Oliver.conner@gmail.com',
-  //FavoritesNumber: 5
 } as const;
+
+const CITIES = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
+] as const;
 
 const Rating = {
   Percent: 100,
@@ -23,11 +30,10 @@ const Accomodation = {
   'hotel':'Hotel'
 } as const;
 
-
 const AuthorizationStatus = {
   Auth: 'AUTH',
   NoAuth: 'NO_AUTH',
   Unknown:'UNKNOWN',
 } as const;
 
-export { Setting, AppRoute, AuthorizationStatus, Accomodation, Rating };
+export { Setting, CITIES, AppRoute, AuthorizationStatus, Accomodation, Rating };

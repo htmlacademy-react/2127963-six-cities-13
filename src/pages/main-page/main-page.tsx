@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-//import { PlaceCard } from '../../components/place-card/place-card';
+
 import { OfferList } from '../../components/offer-list/offer-list';
 import { Offers } from '../../types/offer-type';
 
 type MainProps = {
   offersNumber: number;
   offers: Offers;
-  //userName: string;
-  //favoritesNumber: number;
 };
 
-function MainPage({ offersNumber, offers/*, userName, favoritesNumber*/ }: MainProps): JSX.Element {
+function MainPage({ offersNumber, offers }: MainProps): JSX.Element {
 
   return (
     <div className="page page--gray page--main">

@@ -1,22 +1,26 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+
 import { MainPage } from '../../pages/main-page/main-page';
 import { OfferPage } from '../../pages/offer-page/offer-page';
 import { LoginPage } from '../../pages/login-page/login-page';
 import { FavoritesPage } from '../../pages/favorites-page/favorites-page';
 import { PageNotFound } from '../../pages/page-not-found/page-not-found';
+
 import { AppRoute, AuthorizationStatus } from '../../const';
+//import { AccomodationType } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
 import { Offers } from '../../types/offer-type';
+
+//type AccomodationTypeEnum = typeof AccomodationType[keyof typeof AccomodationType];
 
 type AppProps = {
   offersNumber: number;
   offers: Offers;
-  //userName: string;
-  //favoritesNumber: number;
+  //accomodationType: AccomodationTypeEnum;
 }
 
-function App({ offersNumber, offers/*, userName, favoritesNumber*/ }: AppProps): JSX.Element {
+function App({ offersNumber, offers/*, accomodationType*/ }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -39,7 +43,7 @@ function App({ offersNumber, offers/*, userName, favoritesNumber*/ }: AppProps):
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
               >
-                <FavoritesPage />
+                <FavoritesPage offers={offers}/>
               </PrivateRoute>
             }
           />
