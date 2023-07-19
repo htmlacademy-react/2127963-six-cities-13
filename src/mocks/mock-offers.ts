@@ -19,7 +19,7 @@ const offers = [
       zoom: 13
     },
 
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     rating: 5,
     previewImage: 'https://13.design.pages.academy/static/hotel/16.jpg'

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer-type';
 import { Rating } from '../../const';
+import { AppRoute } from '../../const';
 
 type PlaceCardProps = {
   offer: Offer;
@@ -14,7 +15,7 @@ function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to="#">
+        <Link to={`${AppRoute.Offer}/:${offer.id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title}/>
         </Link>
       </div>
@@ -38,7 +39,7 @@ function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`${AppRoute.Offer}/:${offer.id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

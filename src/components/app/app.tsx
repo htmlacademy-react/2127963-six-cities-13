@@ -8,19 +8,15 @@ import { FavoritesPage } from '../../pages/favorites-page/favorites-page';
 import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
-//import { AccomodationType } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
 import { Offers } from '../../types/offer-type';
-
-//type AccomodationTypeEnum = typeof AccomodationType[keyof typeof AccomodationType];
 
 type AppProps = {
   offersNumber: number;
   offers: Offers;
-  //accomodationType: AccomodationTypeEnum;
 }
 
-function App({ offersNumber, offers/*, accomodationType*/ }: AppProps): JSX.Element {
+function App({ offersNumber, offers }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
