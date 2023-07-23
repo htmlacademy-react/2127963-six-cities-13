@@ -1,21 +1,34 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { Offer } from '../../types/offer-type';
 import { Rating } from '../../const';
 import { AppRoute } from '../../const';
 
-type PlaceCardProps = {
+/*type PlaceCardProps = {
   offer: Offer;
-}
+}*/
 
-function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
+type PlaceCardProps = {
+  offer: Pick<Offer, 'id' | 'type' | 'title' | 'price' | 'rating' | 'previewImage'>;}
+
+function PlaceCard({offer}: PlaceCardProps): JSX.Element {
   const { id, type, title, price, rating, previewImage } = offer;
 
   const offerRating = rating * Rating.Percent / Rating.Divisor;
 
+  const [, setActiveCardId] = useState('');
+
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card"
+      onMouseEnter={() => {
+        setActiveCardId(id);
+      }}
+      onMouseLeave={() => {
+        setActiveCardId('');
+      }}
+    >
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`${AppRoute.Offer}/:${id}`}>
+        <Link to={`${AppRoute.Offer}/${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title}/>
         </Link>
       </div>
