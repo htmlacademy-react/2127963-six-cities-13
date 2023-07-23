@@ -106,7 +106,7 @@ const offers = [
 const detailedOffers = [
   {
     id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
-    title: 'Beautiful &amp; luxurious apartment at great location',
+    title: 'Beautiful & luxurious apartment at great location',
     type: 'apartment',
     price: 820,
     city: {
@@ -124,9 +124,9 @@ const detailedOffers = [
       zoom: 13
     },
 
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
-    rating: 4,
+    rating: 5,
     description: 'A quiet cozy and picturesque apartment that hides behind a river by the unique lightness of Amsterdam.',
     bedrooms: 3,
     goods: [
@@ -134,7 +134,7 @@ const detailedOffers = [
     ],
     host: {
       name: 'Oliver Conner',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: 'https://13.design.pages.academy/static/avatar/5.jpg',
       isPro: false
     },
     images: [
@@ -178,7 +178,7 @@ const detailedOffers = [
     ],
     host: {
       name: 'Oliver Conner',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: 'https://13.design.pages.academy/static/avatar/4.jpg',
       isPro: false
     },
     images: [
@@ -222,7 +222,7 @@ const detailedOffers = [
     ],
     host: {
       name: 'Oliver Conner',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: 'https://13.design.pages.academy/static/avatar/2.jpg',
       isPro: false
     },
     images: [
@@ -266,7 +266,7 @@ const detailedOffers = [
     ],
     host: {
       name: 'Oliver Conner',
-      avatarUrl: 'https://url-to-image/image.png',
+      avatarUrl: 'https://13.design.pages.academy/static/avatar/7.jpg',
       isPro: true
     },
     images: [

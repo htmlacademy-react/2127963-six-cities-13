@@ -10,7 +10,7 @@ type FavoritesProps = {
  offers: Offers;
 }
 
-function FavoritesPage({ offers }: FavoritesProps): JSX.Element {
+function FavoritesPage({ offers }: FavoritesProps) {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
 
   if (favoriteOffers.length === 0) {
@@ -83,6 +83,7 @@ function FavoritesPage({ offers }: FavoritesProps): JSX.Element {
                       &&
                       (
                         <FavoriteCard
+                          id = {favoriteOffer.id}
                           key = {favoriteOffer.id}
                           type = {favoriteOffer.type}
                           title = {favoriteOffer.title}

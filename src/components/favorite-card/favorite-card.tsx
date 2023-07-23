@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Rating, Accomodation } from '../../const';
+import { AppRoute } from '../../const';
 
 type FavoriteCardProps = {
+  id: string;
   type: string;
   title: string;
   price: number;
@@ -16,7 +18,7 @@ function getAccomodationType (accomodationType: AccomodationType) {
   return Accomodation[accomodationType];
 }
 
-function FavoriteCard({ type, title, price, rating, previewImage, isPremium }: FavoriteCardProps): JSX.Element {
+function FavoriteCard({ id, type, title, price, rating, previewImage, isPremium }: FavoriteCardProps) {
 
   const accomodationType = getAccomodationType(type as AccomodationType);
 
@@ -31,14 +33,14 @@ function FavoriteCard({ type, title, price, rating, previewImage, isPremium }: F
       </div>}
 
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`${AppRoute.Offer}/${id}`}>
           <img className="place-card__image"
             src={previewImage}
             width={150}
             height={110}
             alt={title}
           />
-        </a>
+        </Link>
       </div>
       <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
@@ -60,7 +62,9 @@ function FavoriteCard({ type, title, price, rating, previewImage, isPremium }: F
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="#">{title}</Link>
+          <Link to={`${AppRoute.Offer}/${id}`}>
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">{accomodationType}</p>
       </div>

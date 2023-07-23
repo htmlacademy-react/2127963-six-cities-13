@@ -9,7 +9,7 @@ type MainProps = {
   offers: Offers;
 };
 
-function MainPage({ offersNumber, offers }: MainProps): JSX.Element {
+function MainPage({ offersNumber, offers }: MainProps) {
 
   return (
     <div className="page page--gray page--main">

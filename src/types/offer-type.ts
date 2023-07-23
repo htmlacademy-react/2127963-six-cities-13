@@ -32,22 +32,12 @@ export type Offer = {
 
 export type Offers = Offer[]
 
-export type DetailedOffer = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: City;
-
-  location: OfferLocation;
-
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-  description: string;
-  bedrooms: number;
-  goods: string[];
-  host: Host;
-  images: string[];
-  maxAdults: number;
-}
+export type DetailedOffer = Omit<Offer, 'previewImage'>
+& {
+    description: string;
+    bedrooms: number;
+    goods: string[];
+    host: Host;
+    images: string[];
+    maxAdults: number;
+ }

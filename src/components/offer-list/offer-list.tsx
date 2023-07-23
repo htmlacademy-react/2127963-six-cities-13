@@ -5,7 +5,7 @@ type OfferListProps = {
  offers: Offers;
 }
 
-function OfferList ({ offers }: OfferListProps): JSX.Element {
+function OfferList ({ offers }: OfferListProps) {
   return (
     <div className="cities__places-list places__list tabs__content">
 

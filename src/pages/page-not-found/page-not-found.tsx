@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-function PageNotFound(): JSX.Element {
+function PageNotFound() {
   return (
     <div className="page page--gray page--main">
       <Helmet>

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 
 import { App } from './components/app/app';
 import { Setting } from './const';
-import { offers } from './mocks/mock-offers';
+import { offers, detailedOffers } from './mocks/mock-offers';
+import { reviews } from './mocks/mock-reviews';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,6 +15,8 @@ root.render(
     <App
       offersNumber={Setting.OffersNumber}
       offers={offers}
+      detailedOffers={detailedOffers}
+      reviews={reviews}
     />
   </React.StrictMode>
 );

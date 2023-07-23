@@ -10,13 +10,17 @@ import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
 import { Offers } from '../../types/offer-type';
+import { DetailedOffer } from '../../types/offer-type';
+import { Review } from '../../types/review-type';
 
 type AppProps = {
   offersNumber: number;
   offers: Offers;
-}
+  detailedOffers: DetailedOffer[];
+  reviews: Review[];
+};
 
-function App({ offersNumber, offers }: AppProps): JSX.Element {
+function App({ offersNumber, offers, detailedOffers, reviews }: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -26,8 +30,8 @@ function App({ offersNumber, offers }: AppProps): JSX.Element {
             element={<MainPage offersNumber={offersNumber} offers={offers}/>}
           />
           <Route
-            path={`${AppRoute.Offer}/:offerId`}
-            element={<OfferPage />}
+            path={`${AppRoute.Offer}/:id`}
+            element={<OfferPage detailedOffers={detailedOffers} reviews={reviews}/>}
           />
           <Route
             path={AppRoute.Login}
