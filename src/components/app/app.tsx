@@ -1,43 +1,49 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { Main } from '../../pages/main/main';
-import { Offer } from '../../pages/offer/offer';
-import { Login } from '../../pages/login/login';
-import { Favorites } from '../../pages/favorites/favorites';
+
+import { MainPage } from '../../pages/main-page/main-page';
+import { OfferPage } from '../../pages/offer-page/offer-page';
+import { LoginPage } from '../../pages/login-page/login-page';
+import { FavoritesPage } from '../../pages/favorites-page/favorites-page';
 import { PageNotFound } from '../../pages/page-not-found/page-not-found';
+
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
+import { Offers } from '../../types/offer-type';
+import { DetailedOffer } from '../../types/offer-type';
+import { Review } from '../../types/review-type';
 
 type AppProps = {
   offersNumber: number;
-  userName: string;
-  favoritesNumber: number;
-}
+  offers: Offers;
+  detailedOffers: DetailedOffer[];
+  reviews: Review[];
+};
 
-function App({ offersNumber, userName, favoritesNumber }: AppProps): JSX.Element {
+function App({ offersNumber, offers, detailedOffers, reviews }: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<Main offersNumber={offersNumber} userName={userName} favoritesNumber={favoritesNumber} />}
+            element={<MainPage offersNumber={offersNumber} offers={offers}/>}
           />
           <Route
-            path={`${AppRoute.Offer}/:offerId`}
-            element={<Offer />}
+            path={`${AppRoute.Offer}/:id`}
+            element={<OfferPage detailedOffers={detailedOffers} reviews={reviews}/>}
           />
           <Route
             path={AppRoute.Login}
-            element={<Login />}
+            element={<LoginPage />}
           />
           <Route
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={AuthorizationStatus.Auth}
               >
-                <Favorites />
+                <FavoritesPage offers={offers}/>
               </PrivateRoute>
             }
           />
