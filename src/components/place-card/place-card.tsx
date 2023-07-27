@@ -14,14 +14,18 @@ function PlaceCard({offer}: PlaceCardProps) {
 
   const [, setActiveCardId] = useState('');
 
+  const handleMouseEnter = () => {
+    setActiveCardId(id);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveCardId('');
+  };
+
   return (
     <article className="cities__card place-card"
-      onMouseEnter={() => {
-        setActiveCardId(id);
-      }}
-      onMouseLeave={() => {
-        setActiveCardId('');
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}/${id}`}>
