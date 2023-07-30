@@ -5,18 +5,18 @@ const offers = [
     type: 'apartment',
     price: 820,
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 8
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 48.85661,
-      longitude: 2.351499,
-      zoom: 13
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 11
     },
 
     isFavorite: true,
@@ -33,16 +33,16 @@ const offers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.3609553943508,
+        longitude: 4.85309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 11
     },
 
     isFavorite: true,
@@ -59,16 +59,16 @@ const offers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 11
     },
 
     isFavorite: false,
@@ -85,16 +85,16 @@ const offers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 11
     },
 
     isFavorite: true,
@@ -110,18 +110,18 @@ const detailedOffers = [
     type: 'apartment',
     price: 820,
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 8
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 48.85661,
-      longitude: 2.351499,
-      zoom: 13
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 11
     },
 
     isFavorite: true,
@@ -156,16 +156,16 @@ const detailedOffers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.3609553943508,
+        longitude: 4.85309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 11
     },
 
     isFavorite: true,
@@ -200,16 +200,16 @@ const detailedOffers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 11
     },
 
     isFavorite: false,
@@ -229,7 +229,7 @@ const detailedOffers = [
       'img/room.jpg',
       'img/room.jpg',
       'img/apartment-01.jpg',
-      'img/studio-03.jpg',
+      'img/studio-01.jpg',
       'img/room.jpg',
       'img/apartment-02.jpg',
     ],
@@ -244,16 +244,16 @@ const detailedOffers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
+        zoom: 11
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 11
     },
 
     isFavorite: true,
@@ -273,7 +273,7 @@ const detailedOffers = [
       'img/room.jpg',
       'img/apartment-02.jpg',
       'img/apartment-01.jpg',
-      'img/studio-03.jpg',
+      'img/apartment-01.jpg',
       'img/room.jpg',
       'img/apartment-02.jpg',
     ],
@@ -281,4 +281,13 @@ const detailedOffers = [
   }
 ];
 
-export { offers, detailedOffers };
+const SELECTED_CITY = {
+  name: 'Amsterdam',
+  location: {
+    latitude: 52.3909553943508,
+    longitude: 4.85309666406198,
+    zoom: 11,
+  }
+};
+
+export { offers, detailedOffers, SELECTED_CITY };

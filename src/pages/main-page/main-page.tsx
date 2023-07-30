@@ -1,15 +1,29 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
 
+import { Map } from '../../components/map/map';
 import { OfferList } from '../../components/offer-list/offer-list';
-import { Offers } from '../../types/offer-type';
+import { Offer, City } from '../../types/offer-type';
 
 type MainProps = {
   offersNumber: number;
-  offers: Offers;
+  offers: Offer[];
+  city: City;
 };
 
-function MainPage({ offersNumber, offers }: MainProps) {
+function MainPage({ offersNumber, offers, city }: MainProps) {
+  const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
+
+  const handleOfferHover = (id: string | undefined) => {
+    if (!id) {
+      setSelectedOffer(undefined);
+    }
+
+    const currentOffer = offers.find((offer) => offer.id === id);
+
+    setSelectedOffer(currentOffer);
+  };
 
   return (
     <div className="page page--gray page--main">
@@ -111,12 +125,19 @@ function MainPage({ offersNumber, offers }: MainProps) {
               </form>
               <div className="cities__places-list places__list tabs__content">
 
-                <OfferList offers={offers}/>
+                <OfferList
+                  offers={offers}
+                  onOfferHover={handleOfferHover}
+                />
 
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                city={city}
+                offers={offers}
+                selectedOffer={selectedOffer}
+              />
             </div>
           </div>
         </div>
