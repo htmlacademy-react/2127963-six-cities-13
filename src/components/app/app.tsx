@@ -9,8 +9,7 @@ import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
-import { Offers } from '../../types/offer-type';
-import { DetailedOffer } from '../../types/offer-type';
+import { Offers, DetailedOffer, City } from '../../types/offer-type';
 import { Review } from '../../types/review-type';
 
 type AppProps = {
@@ -18,16 +17,17 @@ type AppProps = {
   offers: Offers;
   detailedOffers: DetailedOffer[];
   reviews: Review[];
+  city: City;
 };
 
-function App({ offersNumber, offers, detailedOffers, reviews }: AppProps) {
+function App({ offersNumber, offers, detailedOffers, reviews, city }: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainPage offersNumber={offersNumber} offers={offers}/>}
+            element={<MainPage offersNumber={offersNumber} offers={offers} city={city}/>}
           />
           <Route
             path={`${AppRoute.Offer}/:id`}

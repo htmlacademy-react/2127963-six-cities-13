@@ -1,32 +1,22 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { MouseEvent } from 'react';
 import { Offer } from '../../types/offer-type';
 import { Rating } from '../../const';
 import { AppRoute } from '../../const';
 
 type PlaceCardProps = {
-  offer: Pick<Offer, 'id' | 'type' | 'title' | 'price' | 'rating' | 'previewImage' | 'isFavorite'>;}
+  offer: Pick<Offer, 'id' | 'type' | 'title' | 'price' | 'rating' | 'previewImage' | 'isFavorite'>;
+  handleOfferHover: (evt: MouseEvent<HTMLElement>) => void;
+  handleOfferLeave: (evt: MouseEvent<HTMLElement>) => void;
+}
 
-function PlaceCard({offer}: PlaceCardProps) {
+function PlaceCard({ offer, handleOfferHover, handleOfferLeave }: PlaceCardProps) {
   const { id, type, title, price, rating, previewImage, isFavorite } = offer;
 
   const offerRating = rating * Rating.Percent / Rating.Divisor;
 
-  const [, setActiveCardId] = useState('');
-
-  const handleMouseEnter = () => {
-    setActiveCardId(id);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveCardId('');
-  };
-
   return (
-    <article className="cities__card place-card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <article className="cities__card place-card" id={id} onMouseEnter={handleOfferHover} onMouseLeave={handleOfferLeave}>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}/${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title}/>
