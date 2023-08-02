@@ -13,16 +13,16 @@ type MainProps = {
 };
 
 function MainPage({ offersNumber, offers, city }: MainProps) {
-  const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
+  const [hoveredOffer, setHoveredOffer] = useState<Offer | undefined>(undefined);
 
   const handleOfferHover = (id: string | undefined) => {
     if (!id) {
-      setSelectedOffer(undefined);
+      setHoveredOffer(undefined);
     }
 
     const currentOffer = offers.find((offer) => offer.id === id);
 
-    setSelectedOffer(currentOffer);
+    setHoveredOffer(currentOffer);
   };
 
   return (
@@ -123,21 +123,23 @@ function MainPage({ offersNumber, offers, city }: MainProps) {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
 
-                <OfferList
-                  offers={offers}
-                  onOfferHover={handleOfferHover}
-                />
+              <OfferList
+                offers={offers}
+                onOfferHover={handleOfferHover}
+                isCitiesCard
+                isNearbyPlaceCard={false}
+              />
 
-              </div>
             </section>
             <div className="cities__right-section">
-              <Map
-                city={city}
-                offers={offers}
-                selectedOffer={selectedOffer}
-              />
+              <section className="cities__map map">
+                <Map
+                  city={city}
+                  offers={offers}
+                  selectedOffer={hoveredOffer}
+                />
+              </section>
             </div>
           </div>
         </div>

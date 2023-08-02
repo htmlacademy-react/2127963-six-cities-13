@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MouseEvent } from 'react';
+import cn from 'classnames';
+
 import { Offer } from '../../types/offer-type';
 import { Rating } from '../../const';
 import { AppRoute } from '../../const';
@@ -8,16 +10,33 @@ type PlaceCardProps = {
   offer: Pick<Offer, 'id' | 'type' | 'title' | 'price' | 'rating' | 'previewImage' | 'isFavorite'>;
   handleOfferHover: (evt: MouseEvent<HTMLElement>) => void;
   handleOfferLeave: (evt: MouseEvent<HTMLElement>) => void;
+  isCitiesCard: boolean;
+  isNearbyPlaceCard: boolean;
 }
 
-function PlaceCard({ offer, handleOfferHover, handleOfferLeave }: PlaceCardProps) {
+function PlaceCard({ offer, isCitiesCard, isNearbyPlaceCard, handleOfferHover, handleOfferLeave }: PlaceCardProps) {
   const { id, type, title, price, rating, previewImage, isFavorite } = offer;
 
   const offerRating = rating * Rating.Percent / Rating.Divisor;
 
   return (
-    <article className="cities__card place-card" id={id} onMouseEnter={handleOfferHover} onMouseLeave={handleOfferLeave}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article
+      className={cn(
+        'place-card',
+        {'cities__card': isCitiesCard},
+        {'near-places__card': isNearbyPlaceCard}
+      )}
+      id={id}
+      onMouseEnter={handleOfferHover}
+      onMouseLeave={handleOfferLeave}
+    >
+      <div
+        className={cn(
+          'place-card__image-wrapper',
+          {'cities__image-wrapper': isCitiesCard},
+          {'near-places__image-wrapper': isNearbyPlaceCard}
+        )}
+      >
         <Link to={`${AppRoute.Offer}/${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title}/>
         </Link>

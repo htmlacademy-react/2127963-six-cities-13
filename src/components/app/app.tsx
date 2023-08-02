@@ -16,11 +16,12 @@ type AppProps = {
   offersNumber: number;
   offers: Offers;
   detailedOffers: DetailedOffer[];
+  offersNearby: Offers;
   reviews: Review[];
   city: City;
 };
 
-function App({ offersNumber, offers, detailedOffers, reviews, city }: AppProps) {
+function App({ offersNumber, offers, detailedOffers, offersNearby, reviews, city }: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -31,7 +32,7 @@ function App({ offersNumber, offers, detailedOffers, reviews, city }: AppProps) 
           />
           <Route
             path={`${AppRoute.Offer}/:id`}
-            element={<OfferPage detailedOffers={detailedOffers} reviews={reviews}/>}
+            element={<OfferPage detailedOffers={detailedOffers} offersNearby={offersNearby} reviews={reviews}/>}
           />
           <Route
             path={AppRoute.Login}
