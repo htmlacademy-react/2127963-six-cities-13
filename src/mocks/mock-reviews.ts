@@ -15,7 +15,7 @@ const reviews: Review[] = [
 
   {
     id: 'b67ddfd5-b953-4a30-8c8d-bd083cd6b62',
-    date: '2019-05-08T14:13:56.569Z',
+    date: '2020-10-24T14:13:56.569Z',
     user: {
       name: 'Oliver',
       avatarUrl: 'https://13.design.pages.academy/static/avatar/8.jpg',
@@ -23,7 +23,19 @@ const reviews: Review[] = [
     },
     comment: 'We had fun.',
     rating: 5,
-  }
+  },
+
+  {
+    id: 'b67ddfd5-b953-4a30-8c8d-bd083cd6b6',
+    date: '2019-05-15T14:13:56.569Z',
+    user: {
+      name: 'Snow',
+      avatarUrl: 'https://13.design.pages.academy/static/avatar/6.jpg',
+      isPro: false
+    },
+    comment: 'Amazing!!!!!!!',
+    rating: 5,
+  },
 ];
 
 export { reviews };

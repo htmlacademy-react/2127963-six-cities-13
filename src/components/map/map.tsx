@@ -1,13 +1,13 @@
 import {useRef, useEffect} from 'react';
 import {Icon, Marker, layerGroup} from 'leaflet';
 import { useMap } from '../../hooks/use-map';
-import { City, Offer, Offers } from '../../types/offer-type';
+import { City, Offer } from '../../types/offer-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
   city: City;
-  offers: Offers;
+  offers: Offer[];
   selectedOffer: Offer | undefined;
 };
 
@@ -54,10 +54,7 @@ function Map(props: MapProps) {
   }, [map, offers, selectedOffer]);
 
   return (
-    <section
-      className="cities__map map"
-      ref={mapRef}
-    />
+    <div style={{height: '100%', width: '100%'}} ref={mapRef}></div>
   );
 }
 

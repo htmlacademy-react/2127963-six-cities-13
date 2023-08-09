@@ -1,3 +1,5 @@
+import { humanizeDate } from '../../utils';
+
 type ReviewProps = {
   user: string;
   rating: number;
@@ -6,6 +8,8 @@ type ReviewProps = {
   avatarUrl: string;
 }
 function ReviewItem ({ user, rating, comment, date, avatarUrl }: ReviewProps) {
+  const reviewDate = humanizeDate(date);
+
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -30,8 +34,8 @@ function ReviewItem ({ user, rating, comment, date, avatarUrl }: ReviewProps) {
         <p className="reviews__text">
           {comment}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">
-          {date}
+        <time className="reviews__time" dateTime={date}>
+          {reviewDate}
         </time>
       </div>
     </li>

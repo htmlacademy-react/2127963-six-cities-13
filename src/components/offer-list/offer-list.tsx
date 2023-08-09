@@ -1,13 +1,17 @@
 import { MouseEvent } from 'react';
+import cn from 'classnames';
+
 import { Offers } from '../../types/offer-type';
 import { PlaceCard } from '../place-card/place-card';
 
 type OfferListProps = {
  offers: Offers;
+ isCitiesCard: boolean;
+ isNearbyPlaceCard: boolean;
  onOfferHover: (id: string | undefined) => void;
 }
 
-function OfferList ({ offers, onOfferHover }: OfferListProps) {
+function OfferList ({ offers, isCitiesCard, isNearbyPlaceCard, onOfferHover }: OfferListProps) {
   const handleOfferHover = (evt: MouseEvent<HTMLElement>) => {
     evt.preventDefault();
     onOfferHover(evt.currentTarget.id);
@@ -20,9 +24,15 @@ function OfferList ({ offers, onOfferHover }: OfferListProps) {
   };
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={cn(
+      'places__list',
+      {'cities__places-list': isCitiesCard},
+      {'tabs__content': isCitiesCard},
+      {'near-places__list': isNearbyPlaceCard}
+    )}
+    >
 
-      {offers.map((offer) => <PlaceCard key={offer.id} offer={offer} handleOfferHover={handleOfferHover} handleOfferLeave={handleOfferLeave}/>)}
+      {offers.map((offer) => <PlaceCard key={offer.id} offer={offer} isCitiesCard={isCitiesCard} isNearbyPlaceCard={isNearbyPlaceCard} handleOfferHover={handleOfferHover} handleOfferLeave={handleOfferLeave}/>)}
 
     </div>
   );
