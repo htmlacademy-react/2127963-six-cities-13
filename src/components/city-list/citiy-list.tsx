@@ -2,8 +2,6 @@ import {Link} from 'react-router-dom';
 import { MouseEvent } from 'react';
 import cn from 'classnames';
 
-//import { useAppDispatch/*, useAppSelector*/ } from '../../hooks';
-//import { selectCity } from '../../store/action';
 import { CITIES } from '../../const';
 
 type CityListProps = {
@@ -12,16 +10,6 @@ type CityListProps = {
 }
 
 function CityList ({ selectedCity, onCityClick }: CityListProps) {
-  /*const dispatch = useAppDispatch();
-  const selectedCity = useAppSelector((state) => state.city);
-
-  const handleCityClick = (evt: MouseEvent<HTMLElement>) => {
-    evt.preventDefault();
-    if (!evt.currentTarget.textContent) {
-      return;
-    }
-    dispatch(selectCity(evt.currentTarget.textContent));
-  };*/
 
   return (
     <ul className="locations__list tabs__list">
@@ -38,7 +26,6 @@ function CityList ({ selectedCity, onCityClick }: CityListProps) {
         </li>
       ))}
     </ul>
-
   );
 }
 

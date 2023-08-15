@@ -3,7 +3,6 @@ import cn from 'classnames';
 import { FormEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changeSortOption } from '../../store/action';
-//import { sortingOptions } from '../../const';
 import { SortOption } from '../../const';
 
 function Sorting() {

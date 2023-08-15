@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { selectCity, getOffers, changeSortOption } from './action';
-import { DEFAULT_CITY/*, DEFAULT_SORT_TYPE, sortingOptions*/, SortOption } from '../const';
+import { DEFAULT_CITY, SortOption } from '../const';
 import { offers } from '../mocks/mock-offers';
 
 

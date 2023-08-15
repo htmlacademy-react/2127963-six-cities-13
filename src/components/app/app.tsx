@@ -9,7 +9,7 @@ import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
-import { Offers, DetailedOffer/*, City*/ } from '../../types/offer-type';
+import { Offers, DetailedOffer } from '../../types/offer-type';
 import { Review } from '../../types/review-type';
 
 type AppProps = {
@@ -17,7 +17,7 @@ type AppProps = {
   detailedOffers: DetailedOffer[];
   offersNearby: Offers;
   reviews: Review[];
-  //city: City;
+
 };
 
 function App({ offers, detailedOffers, offersNearby, reviews }: AppProps) {

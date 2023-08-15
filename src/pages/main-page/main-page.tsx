@@ -9,9 +9,8 @@ import { Map } from '../../components/map/map';
 import { OfferList } from '../../components/offer-list/offer-list';
 import { CityList } from '../../components/city-list/citiy-list';
 import { Sorting } from '../../components/sorting/sorting';
-//import { CITIES } from '../../const';
 import { selectCity } from '../../store/action';
-import { Offer/*, City*/ } from '../../types/offer-type';
+import { Offer } from '../../types/offer-type';
 
 
 function MainPage() {

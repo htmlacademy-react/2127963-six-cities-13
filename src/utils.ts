@@ -27,7 +27,5 @@ const sortOffers = (offers: Offer[], sorting: string): Offer[] => {
   }
 };
 
-//const getOffersByCity = (offers: Offer[], cityName: string): Offer[] => offers.filter((offer) => offer.city.name === cityName);
 
-
-export { humanizeDate, sortOffers/*, getOffersByCity*/ };
+export { humanizeDate, sortOffers };
