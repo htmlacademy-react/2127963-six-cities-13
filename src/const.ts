@@ -1,7 +1,3 @@
-const Setting = {
-  OffersNumber: 5,
-} as const;
-
 const CITIES = [
   'Paris',
   'Cologne',
@@ -10,6 +6,8 @@ const CITIES = [
   'Hamburg',
   'Dusseldorf',
 ] as const;
+
+const DEFAULT_CITY = 'Paris';
 
 const Rating = {
   Percent: 100,
@@ -36,10 +34,17 @@ const AuthorizationStatus = {
   Unknown:'UNKNOWN',
 } as const;
 
+const SortOption = {
+  Popular: 'Popular',
+  LowToHigh: 'Price: low to high',
+  HighToLow: 'Price: high to low',
+  TopRatedFirst: 'Top rated first'
+};
+
 const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+  'img/pin.svg';
 
 const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+  'img/pin-active.svg';
 
-export { Setting, CITIES, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };
+export { CITIES, DEFAULT_CITY, SortOption, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };

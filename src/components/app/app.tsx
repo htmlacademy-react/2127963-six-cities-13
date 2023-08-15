@@ -9,26 +9,25 @@ import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
-import { Offers, DetailedOffer, City } from '../../types/offer-type';
+import { Offers, DetailedOffer } from '../../types/offer-type';
 import { Review } from '../../types/review-type';
 
 type AppProps = {
-  offersNumber: number;
   offers: Offers;
   detailedOffers: DetailedOffer[];
   offersNearby: Offers;
   reviews: Review[];
-  city: City;
+
 };
 
-function App({ offersNumber, offers, detailedOffers, offersNearby, reviews, city }: AppProps) {
+function App({ offers, detailedOffers, offersNearby, reviews }: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainPage offersNumber={offersNumber} offers={offers} city={city}/>}
+            element={<MainPage/>}
           />
           <Route
             path={`${AppRoute.Offer}/:id`}
