@@ -13,4 +13,10 @@ const changeSortOption = createAction('changeSortOption', (sortOption: string) =
   payload: sortOption
 }));
 
-export { selectCity, getOffers, changeSortOption };
+const loadOffers = createAction('loadOffers', (offers: Offer[]) => ({
+  payload: offers
+}));
+
+const setOffersLoadingStatus = createAction<boolean>('setOffersLoadingStatus');
+
+export { selectCity, getOffers, changeSortOption, loadOffers, setOffersLoadingStatus };
