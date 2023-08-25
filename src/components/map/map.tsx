@@ -1,5 +1,5 @@
-import {useRef, useEffect} from 'react';
-import {Icon, Marker, layerGroup} from 'leaflet';
+import { useRef, useEffect } from 'react';
+import { Icon, Marker, layerGroup } from 'leaflet';
 import { useMap } from '../../hooks/use-map';
 import { City, Offer } from '../../types/offer-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
@@ -28,6 +28,19 @@ function Map(props: MapProps) {
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+
+  const cityLocation = city.location;
+
+  useEffect(() => {
+    if (map) {
+      const { latitude, longitude, zoom } = cityLocation;
+      map.flyTo(
+        [latitude, longitude],
+        zoom,
+        { animate: true, duration: 3 }
+      );
+    }
+  }, [map, cityLocation]);
 
   useEffect(() => {
     if (map) {

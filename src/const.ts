@@ -47,4 +47,10 @@ const URL_MARKER_DEFAULT =
 const URL_MARKER_CURRENT =
   'img/pin-active.svg';
 
-export { CITIES, DEFAULT_CITY, SortOption, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };
+  enum APIRoute {
+    Offers = '/offers',
+    Login = '/login',
+    Logout = '/logout',
+  }
+
+export { APIRoute, CITIES, DEFAULT_CITY, SortOption, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };
