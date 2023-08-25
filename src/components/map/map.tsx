@@ -29,6 +29,19 @@ function Map(props: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
+  const cityLocation = city.location;
+
+  useEffect(() => {
+    if (map) {
+      const { latitude, longitude, zoom } = cityLocation;
+      map.flyTo(
+        [latitude, longitude],
+        zoom,
+        { animate: true, duration: 3 }
+      );
+    }
+  }, [map, cityLocation]);
+
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
