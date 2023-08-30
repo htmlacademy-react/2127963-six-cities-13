@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useAppSelector } from '../../hooks';
 
@@ -11,6 +11,8 @@ import { LoadingPage } from '../../pages/loading-page/loading-page';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
+import { HistoryRouter } from '../history-router/history-router';
+import { browserHistory } from '../../browser-history';
 import { Offers, DetailedOffer } from '../../types/offer-type';
 import { Review } from '../../types/review-type';
 
@@ -23,11 +25,11 @@ type AppProps = {
 };
 
 function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
-  //const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const offers = useAppSelector((state) => state.offers);
   const areOffersLoading = useAppSelector((state) => state.areOffersLoading);
 
-  if (/*authorizationStatus === AuthorizationStatus.Unknown || */areOffersLoading) {
+  if (authorizationStatus === AuthorizationStatus.Unknown || areOffersLoading) {
     return (
       <LoadingPage />
     );
@@ -35,7 +37,7 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
             path={AppRoute.Main}
@@ -52,9 +54,7 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute
-                authorizationStatus={AuthorizationStatus.Auth}
-              >
+              <PrivateRoute authorizationStatus={authorizationStatus}>
                 <FavoritesPage offers={offers}/>
               </PrivateRoute>
             }
@@ -64,7 +64,7 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
             element={<PageNotFound />}
           />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }

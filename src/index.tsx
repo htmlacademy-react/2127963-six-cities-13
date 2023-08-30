@@ -6,9 +6,11 @@ import { store } from './store';
 import { App } from './components/app/app';
 import { /*offers,*/ detailedOffers, offersNearby/*, SELECTED_CITY*/ } from './mocks/mock-offers';
 import { reviews } from './mocks/mock-reviews';
-import { fetchOffersAction } from './store/api-actions';
+import { fetchOffersAction, checkAuthAction } from './store/api-actions';
+import ErrorMessage from './components/error-message/error-message';
 
 store.dispatch(fetchOffersAction());
+store.dispatch(checkAuthAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,6 +19,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorMessage />
       <App
         detailedOffers={detailedOffers}
         offersNearby={offersNearby}
