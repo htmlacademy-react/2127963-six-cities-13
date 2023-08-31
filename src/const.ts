@@ -53,6 +53,5 @@ enum APIRoute {
     Logout = '/logout',
   }
 
-const TIMEOUT_SHOW_ERROR = 2000;
 
-export { TIMEOUT_SHOW_ERROR, APIRoute, CITIES, DEFAULT_CITY, SortOption, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };
+export { APIRoute, CITIES, DEFAULT_CITY, SortOption, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };

@@ -25,10 +25,9 @@ const requireAuthorization = createAction<AuthorizationStatus>('requireAuthoriza
 
 const redirectToRoute = createAction<AppRoute>('redirectToRoute');
 
-const setError = createAction<string | null>('setError');
 
 /*const setUserInfo = createAction('setUserInfo', (userInfo: UserData | null) => ({
   payload: userInfo
 }));*/
 
-export { setError, selectCity, getOffers, changeSortOption, loadOffers, setOffersLoadingStatus, requireAuthorization, redirectToRoute/*, setUserInfo*/ };
+export { selectCity, getOffers, changeSortOption, loadOffers, setOffersLoadingStatus, requireAuthorization, redirectToRoute/*, setUserInfo*/ };
