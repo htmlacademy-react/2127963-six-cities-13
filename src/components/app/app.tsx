@@ -21,8 +21,8 @@ type AppProps = {
   detailedOffers: DetailedOffer[];
   offersNearby: Offers;
   reviews: Review[];
-
 };
+//const isAuthorized = (status: AuthorizationStatus.Auth | AuthorizationStatus.NoAuth) => status === AuthorizationStatus.Auth;
 
 function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
@@ -34,6 +34,11 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
       <LoadingPage />
     );
   }
+  //const checkedSt = isAuthorized(authorizationStatus);
+  //console.log(checkedSt);
+
+  //const currentAuthStatus = authorizationStatus === AuthorizationStatus.Auth;
+  //console.log(currentAuthStatus);
 
   return (
     <HelmetProvider>
@@ -41,7 +46,7 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainPage/>}
+            element={<MainPage authorizationStatus={authorizationStatus}/>}
           />
           <Route
             path={`${AppRoute.Offer}/:id`}

@@ -23,21 +23,12 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const checkAuthAction = createAsyncThunk<void, undefined, {
+/*export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'user/checkAuth',
-  /*async (_arg, {dispatch, extra: api}) => {
-    try {
-      const {data} = await api.get<UserData>(APIRoute.Login);
-      dispatch(requireAuthorization(AuthorizationStatus.Auth));
-      dispatch(setUserInfo(data));
-    } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
-    }
-  },*/
   async (_arg, {dispatch, extra: api}) => {
     try {
       await api.get(APIRoute.Login);
@@ -46,6 +37,20 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
       dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     }
   },
+);*/
+
+
+export const checkAuthAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'user/checkAuth',
+  async (_arg, {dispatch, extra: api}) => {
+    await api.get(APIRoute.Login)
+      .then(() => dispatch(requireAuthorization(AuthorizationStatus.Auth)))
+      .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NoAuth)));
+  }
 );
 
 export const loginAction = createAsyncThunk<void, AuthData, {
