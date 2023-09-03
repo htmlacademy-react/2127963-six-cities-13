@@ -14,12 +14,12 @@ const Rating = {
   Divisor: 5
 } as const;
 
-const AppRoute = {
-  Main: '/',
-  Login: '/login',
-  Favorites: '/favorites',
-  Offer: '/offer'
-} as const;
+enum AppRoute {
+  Main = '/',
+  Login = '/login',
+  Favorites= '/favorites',
+  Offer ='/offer'
+}
 
 const Accomodation = {
   'apartment': 'Apartment',
@@ -28,11 +28,11 @@ const Accomodation = {
   'hotel':'Hotel'
 } as const;
 
-const AuthorizationStatus = {
-  Auth: 'AUTH',
-  NoAuth: 'NO_AUTH',
-  Unknown:'UNKNOWN',
-} as const;
+const enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
 
 const SortOption = {
   Popular: 'Popular',
@@ -47,10 +47,11 @@ const URL_MARKER_DEFAULT =
 const URL_MARKER_CURRENT =
   'img/pin-active.svg';
 
-  enum APIRoute {
+enum APIRoute {
     Offers = '/offers',
     Login = '/login',
     Logout = '/logout',
   }
+
 
 export { APIRoute, CITIES, DEFAULT_CITY, SortOption, AppRoute, AuthorizationStatus, Accomodation, Rating, URL_MARKER_DEFAULT, URL_MARKER_CURRENT };

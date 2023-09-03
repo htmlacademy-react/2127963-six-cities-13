@@ -6,9 +6,12 @@ import { store } from './store';
 import { App } from './components/app/app';
 import { /*offers,*/ detailedOffers, offersNearby/*, SELECTED_CITY*/ } from './mocks/mock-offers';
 import { reviews } from './mocks/mock-reviews';
-import { fetchOffersAction } from './store/api-actions';
+import { fetchOffersAction, checkAuthAction } from './store/api-actions';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 store.dispatch(fetchOffersAction());
+store.dispatch(checkAuthAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,6 +20,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ToastContainer />
       <App
         detailedOffers={detailedOffers}
         offersNearby={offersNearby}
