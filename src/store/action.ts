@@ -1,33 +1,49 @@
 import { createAction } from '@reduxjs/toolkit';
-import { Offer } from '../types/offer-type';
+import { Offer, DetailedOffer } from '../types/offer-type';
+import { Review } from '../types/review-type';
 import { AppRoute, AuthorizationStatus } from '../const';
 //import { UserData } from '../types/user-data';
 
-const selectCity = createAction('selectCity', (selectedCityName: string) => ({
+export const selectCity = createAction('selectCity', (selectedCityName: string) => ({
   payload: selectedCityName
 }));
 
-const getOffers = createAction('getOffers', (offers: Offer[]) => ({
-  payload: offers
-}));
-
-const changeSortOption = createAction('changeSortOption', (sortOption: string) => ({
+export const changeSortOption = createAction('changeSortOption', (sortOption: string) => ({
   payload: sortOption
 }));
 
-const loadOffers = createAction('loadOffers', (offers: Offer[]) => ({
+export const loadOffers = createAction('loadOffers', (offers: Offer[]) => ({
   payload: offers
 }));
 
-const setOffersLoadingStatus = createAction<boolean>('setOffersLoadingStatus');
+export const setOffersLoadingStatus = createAction<boolean>('setOffersLoadingStatus');
 
-const requireAuthorization = createAction<AuthorizationStatus>('requireAuthorization');
+export const loadDetailedOffer = createAction('loadDetailedOffer', (detailedOffer: DetailedOffer) => ({
+  payload: detailedOffer
+}));
 
-const redirectToRoute = createAction<AppRoute>('redirectToRoute');
+export const setDetailedOfferLoadingStatus = createAction<boolean>('setDetailedOfferDataLoadingStatus');
+
+export const loadReviews = createAction('loadReviews', (reviews: Review[]) => ({
+  payload: reviews
+}));
+
+export const setReviewsLoadingStatus = createAction<boolean>('setReviewsLoadingStatus');
+
+export const loadOffersNearby = createAction('loadOffersNearby', (offers: Offer[]) => ({
+  payload: offers
+}));
+
+export const setOffersNearbyLoadingStatus = createAction<boolean>('setOffersNearbyLoadingStatus');
+
+export const setCommentSendingStatus = createAction<boolean>('setCommentSendingStatus');
+
+export const requireAuthorization = createAction<AuthorizationStatus>('requireAuthorization');
+
+export const redirectToRoute = createAction<AppRoute>('redirectToRoute');
 
 
 /*const setUserInfo = createAction('setUserInfo', (userInfo: UserData | null) => ({
   payload: userInfo
 }));*/
 
-export { selectCity, getOffers, changeSortOption, loadOffers, setOffersLoadingStatus, requireAuthorization, redirectToRoute/*, setUserInfo*/ };

@@ -1,37 +1,76 @@
-import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import { Map } from '../../components/map/map';
 import { OfferList } from '../../components/offer-list/offer-list';
 import { ReviewForm } from '../../components/review-form/review-form';
 import { ReviewList } from '../../components/review-list/review-list';
-import { Review } from '../../types/review-type';
-import { Offer, DetailedOffer } from '../../types/offer-type';
+//import { Review } from '../../types/review-type';
+import { Offer/*, DetailedOffer*/ } from '../../types/offer-type';
 import { Rating } from '../../const';
 import { PageNotFound } from '../page-not-found/page-not-found';
+import { LoadingPage } from '../loading-page/loading-page';
+import { Header } from '../../components/header/header';
+import { AuthorizationStatus } from '../../const';
+import { fetchDetailedOfferAction, fetchReviewsAction, fetchOffersNearbyAction } from '../../store/api-actions';
+
 
 type OfferProps = {
-  detailedOffers: DetailedOffer[];
-  offersNearby: Offer[];
-  reviews: Review[];
+  //detailedOffers: DetailedOffer[];
+  //offersNearby: Offer[];
+  //reviews: Review[];
+  authorizationStatus: AuthorizationStatus.Auth | AuthorizationStatus.NoAuth;
 }
 
-function OfferPage({ detailedOffers, offersNearby, reviews }: OfferProps) {
+function OfferPage({ /*detailedOffers, offersNearby, reviews,*/ authorizationStatus }: OfferProps) {
+
+
+  const currentOffer = useParams();
+  const selectedOffer = useAppSelector((state) => state.detailedOffer);
+  const reviews = useAppSelector((state) => state.reviews);
+  const offersNearby = useAppSelector((state) => state.offersNearby);
+  const isDetailedOfferLoading = useAppSelector ((state) => state.isDetaildOfferLoading);
+  const areReviewsLoading = useAppSelector((state) => state.areReviewsLoading);
+  const areOffersNearbyLoading = useAppSelector((state) => state.areOffersNearbyLoading);
+
+
+  const OFFERS_NEARBY_TO_SHOW_NUMBER = 3;
+
+  //const selectedOffer = detailedOffers.find((detailedOffer) => detailedOffer.id === offerToShow.id);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (currentOffer.id) {
+      dispatch(fetchDetailedOfferAction(currentOffer.id));
+      dispatch(fetchReviewsAction(currentOffer.id));
+      dispatch(fetchOffersNearbyAction(currentOffer.id));
+      //dispatch(fetchFavoritesAction());
+    }
+  }, [dispatch, currentOffer.id]);
+
+  const offersNearbyToShow = offersNearby.slice(0, OFFERS_NEARBY_TO_SHOW_NUMBER);
+
   const [hoveredOffer, setHoveredOffer] = useState<Offer | undefined>(undefined);
 
   const handleOfferHover = (id: string | undefined) => {
     if (!id) {
       setHoveredOffer(undefined);
     }
+    const currentOfferNearby = offersNearbyToShow.find((offerNearbyToShow) => offerNearbyToShow.id === id);
 
-    const currentOffer = offersNearby.find((offerNearby) => offerNearby.id === id);
-
-    setHoveredOffer(currentOffer);
+    setHoveredOffer(currentOfferNearby);
   };
 
-  const offerToShow = useParams();
-  const selectedOffer = detailedOffers.find((detailedOffer) => detailedOffer.id === offerToShow.id);
+
+  if (isDetailedOfferLoading || areReviewsLoading || areOffersNearbyLoading) {
+    return (
+      <LoadingPage />
+    );
+  }
+
 
   if (!selectedOffer){
     return <PageNotFound />;
@@ -60,44 +99,7 @@ function OfferPage({ detailedOffers, offersNearby, reviews }: OfferProps) {
       <Helmet>
         <title>Six cities: Offer</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <Link className="header__logo-link" to="/">
-                <img
-                  className="header__logo"
-                  src="img/logo.svg"
-                  alt="6 cities logo"
-                  width={81}
-                  height={41}
-                />
-              </Link>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <Link
-                    className="header__nav-link header__nav-link--profile"
-                    to="#"
-                  >
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">
-                      Oliver.conner@gmail.com
-                    </span>
-                    <span className="header__favorite-count">3</span>
-                  </Link>
-                </li>
-                <li className="header__nav-item">
-                  <Link className="header__nav-link" to="#">
-                    <span className="header__signout">Sign out</span>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header authorizationStatus={authorizationStatus}/>
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
@@ -198,7 +200,7 @@ function OfferPage({ detailedOffers, offersNearby, reviews }: OfferProps) {
           <section className="offer__map map">
             <Map
               city={city}
-              offers={offersNearby}
+              offers={offersNearbyToShow}
               selectedOffer={hoveredOffer}
             />
           </section>
@@ -209,7 +211,7 @@ function OfferPage({ detailedOffers, offersNearby, reviews }: OfferProps) {
               Other places in the neighbourhood
             </h2>
             <OfferList
-              offers={offersNearby}
+              offers={offersNearbyToShow}
               onOfferHover={handleOfferHover}
               isCitiesCard={false}
               isNearbyPlaceCard
