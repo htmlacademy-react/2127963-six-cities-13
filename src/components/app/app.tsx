@@ -13,18 +13,9 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { PrivateRoute } from '../private-route/private-route';
 import { HistoryRouter } from '../history-router/history-router';
 import { browserHistory } from '../../browser-history';
-import { Offers, DetailedOffer } from '../../types/offer-type';
-import { Review } from '../../types/review-type';
 
-type AppProps = {
-  //offers: Offers;
-  detailedOffers: DetailedOffer[];
-  offersNearby: Offers;
-  reviews: Review[];
-};
-//const isAuthorized = (status: AuthorizationStatus.Auth | AuthorizationStatus.NoAuth) => status === AuthorizationStatus.Auth;
 
-function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
+function App() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const offers = useAppSelector((state) => state.offers);
   const areOffersLoading = useAppSelector((state) => state.areOffersLoading);
@@ -34,11 +25,6 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
       <LoadingPage />
     );
   }
-  //const checkedSt = isAuthorized(authorizationStatus);
-  //console.log(checkedSt);
-
-  //const currentAuthStatus = authorizationStatus === AuthorizationStatus.Auth;
-  //console.log(currentAuthStatus);
 
   return (
     <HelmetProvider>
@@ -50,7 +36,7 @@ function App({ /*offers,*/ detailedOffers, offersNearby, reviews }: AppProps) {
           />
           <Route
             path={`${AppRoute.Offer}/:id`}
-            element={<OfferPage detailedOffers={detailedOffers} offersNearby={offersNearby} reviews={reviews}/>}
+            element={<OfferPage authorizationStatus={authorizationStatus}/>}
           />
           <Route
             path={AppRoute.Login}

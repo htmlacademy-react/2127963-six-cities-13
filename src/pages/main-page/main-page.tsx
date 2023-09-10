@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { MouseEvent } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { MainEmpty } from '../main-empty/main-empty';
+import { MainEmpty } from '../../components/main-empty/main-empty';
 import { Map } from '../../components/map/map';
 import { Header } from '../../components/header/header';
 import { OfferList } from '../../components/offer-list/offer-list';
