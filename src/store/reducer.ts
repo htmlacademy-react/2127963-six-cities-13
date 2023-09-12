@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { selectCity, changeSortOption, loadOffers, loadDetailedOffer, loadOffersNearby, setOffersLoadingStatus, setDetailedOfferLoadingStatus, setOffersNearbyLoadingStatus, loadReviews, setReviewsLoadingStatus, setCommentSendingStatus, requireAuthorization/*, setUserInf*/ } from './action';
+import { selectCity, changeSortOption, loadOffers, loadDetailedOffer, loadOffersNearby, setOffersLoadingStatus, setDetailedOfferLoadingStatus, setOffersNearbyLoadingStatus, loadReviews, setReviewsLoadingStatus, setCommentSendingStatus, requireAuthorization } from './action';
 import { DEFAULT_CITY, SortOption, AuthorizationStatus } from '../const';
 import { Offer, DetailedOffer } from '../types/offer-type';
 import { Review } from '../types/review-type';

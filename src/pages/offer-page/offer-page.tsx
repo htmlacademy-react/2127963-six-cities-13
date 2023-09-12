@@ -8,8 +8,7 @@ import { Map } from '../../components/map/map';
 import { OfferList } from '../../components/offer-list/offer-list';
 import { ReviewForm } from '../../components/review-form/review-form';
 import { ReviewList } from '../../components/review-list/review-list';
-//import { Review } from '../../types/review-type';
-import { Offer/*, DetailedOffer*/ } from '../../types/offer-type';
+import { Offer } from '../../types/offer-type';
 import { Rating } from '../../const';
 import { PageNotFound } from '../page-not-found/page-not-found';
 import { LoadingPage } from '../loading-page/loading-page';
@@ -19,13 +18,10 @@ import { fetchDetailedOfferAction, fetchReviewsAction, fetchOffersNearbyAction }
 
 
 type OfferProps = {
-  //detailedOffers: DetailedOffer[];
-  //offersNearby: Offer[];
-  //reviews: Review[];
   authorizationStatus: AuthorizationStatus.Auth | AuthorizationStatus.NoAuth;
 }
 
-function OfferPage({ /*detailedOffers, offersNearby, reviews,*/ authorizationStatus }: OfferProps) {
+function OfferPage({ authorizationStatus }: OfferProps) {
 
 
   const currentOffer = useParams();
@@ -39,7 +35,6 @@ function OfferPage({ /*detailedOffers, offersNearby, reviews,*/ authorizationSta
 
   const OFFERS_NEARBY_TO_SHOW_NUMBER = 3;
 
-  //const selectedOffer = detailedOffers.find((detailedOffer) => detailedOffer.id === offerToShow.id);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -93,6 +88,8 @@ function OfferPage({ /*detailedOffers, offersNearby, reviews,*/ authorizationSta
 
   const offerRating = rating * Rating.Percent / Rating.Divisor;
   const {name, avatarUrl, isPro} = host;
+
+  const isAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
   return (
     <div className="page">
@@ -193,7 +190,7 @@ function OfferPage({ /*detailedOffers, offersNearby, reviews,*/ authorizationSta
                   Reviews · <span className="reviews__amount">{reviews.length}</span>
                 </h2>
                 <ReviewList reviews={reviews}/>
-                <ReviewForm />
+                {isAuthorized && <ReviewForm />}
               </section>
             </div>
           </div>

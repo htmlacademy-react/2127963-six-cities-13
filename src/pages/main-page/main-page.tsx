@@ -1,4 +1,3 @@
-//import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { MouseEvent } from 'react';
@@ -45,12 +44,6 @@ function MainPage({ authorizationStatus }: MainPageProps) {
   };
 
   const offersByCity = offers.filter((offer) => offer.city.name === selectedCityName);
-
-  /*if (!offersByCity.length) {
-    return (
-      <MainEmpty/>
-    );
-  }*/
 
   const areNoOffers = offersByCity.length === 0;
 
